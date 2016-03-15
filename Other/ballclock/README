@@ -1,0 +1,42 @@
+This was my first exercise in Go.  The program simulates a ball clock: http://www.idle-tyme.com  The objective of the exercise is to see, for a given number of balls, how many days does it take for the balls to return to their original order.  This is a full simulation that moves the balls through the clock one at a time.
+
+After I finished the simulation in Go, I decided to also write it in C so I could benchmark how fast the compile Go code ran.  There are currently two Go compilers, the native compiler from Google and a GCC frontend.  Because Go is rapidly evolving, I made sure I had most recent version of the native compiler (v1.6) and also GCC (5.3).  I then compiled the code with the native compiler and also the GCC frontend both with no GCC optimization and with O3 optimization.  I also compiled the translated C version directly with GCC both with and without optimization.  The results are below.
+
+RUNTIMES FOR BALLCLOCK PROGRAM IN GO COMPILED VARIOUS WAYS
+
+Command line options: "time ballclock_v4 127 6955199"
+
+go1.6
+real    0m1.354s
+user    0m1.345s
+sys     0m0.006s
+
+gccgo5.3 with no optimization
+real    0m5.015s
+user    0m4.996s
+sys     0m0.027s
+
+gccgo5.3 with -O3 optimization
+real    0m1.053s
+user    0m1.039s
+sys     0m0.016s
+
+COMPARISON WITH PROGRAM DIRECTLY COMPILED IN C
+
+gcc5.3 with no optimization
+real    0m2.895s
+user    0m2.891s
+sys     0m0.004s
+
+gcc5.3 with -O3 optimization
+real    0m0.596s
+user    0m0.589s
+sys     0m0.007s
+
+I drew the following conclusions:
+
+1) The native compiler must use a fair degree of optimization by default and
+
+2) The GCC-Go frontend appears to apply a 1.75x speed penalty in comparison to straight C but given Go's ease of use and concurrency features, this would probably be acceptable for most applications.
+
+Obviously these conclusions are restricted to this particular problem which mostly consists of shuffling a relatively small set of integers around in a fixed memory allocation but I think it is somewhat illustrative of Go's limitations.

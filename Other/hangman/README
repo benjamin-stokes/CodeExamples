@@ -1,0 +1,1 @@
+This was the first project I undertook in Python.  It's a simple game of hangman.  Approach with care, it's highly addictive.  There are to two versions, the original which uses a hardcoded wordlist and hangman2 which reads its wordlist from a supplied CSV.
