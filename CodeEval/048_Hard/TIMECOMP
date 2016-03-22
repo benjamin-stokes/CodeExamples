@@ -1,0 +1,13 @@
+Time Comparison
+
+048.r:
+
+real	0m0.480s
+user	0m0.342s
+sys	0m0.068s
+
+048.c (with gcc5.3 -O3):
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
