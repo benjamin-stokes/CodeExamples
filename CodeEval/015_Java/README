@@ -1,0 +1,15 @@
+Endianness
+
+Challenge Description:
+
+Write a program which prints the endianness of the system.
+Input sample:
+
+There is no input for this program.
+Output sample:
+
+Print to stdout the endianness, wheather it is LittleEndian or BigEndian.
+
+For example:
+
+BigEndian
